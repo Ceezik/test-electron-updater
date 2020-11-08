@@ -28,6 +28,7 @@ function App() {
 
   return (
     <>
+      <p>cc Louis</p>
       <p>{version ? version : "no version"}</p>
       {message && <p>{message}</p>}
     </>
