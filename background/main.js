@@ -55,8 +55,11 @@ autoUpdater.on("update-not-available", () => {
   mainWindow.webContents.send("UPDATE_NOT_AVAILABLE");
 });
 
-autoUpdater.on("dowload-progress", (progress) => {
-  mainWindow.webContents.send("DOWLOAD_PROGRESS", Math.round(progress.percent));
+autoUpdater.on("download-progress", (progress) => {
+  mainWindow.webContents.send(
+    "DOWNLOAD_PROGRESS",
+    Math.round(progress.percent)
+  );
 });
 
 autoUpdater.on("update-downloaded", () => {
