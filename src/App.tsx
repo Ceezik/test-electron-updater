@@ -8,7 +8,8 @@ declare var window: Window & {
 
 function App() {
   const [version, setVersion] = useState("");
-  const [message, setMessage] = useState("");
+  const [status, setStatus] = useState("Looking for updates");
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     window.background.on("GET_APP_VERSION", (version: string) => {
@@ -16,22 +17,31 @@ function App() {
     });
 
     window.background.on("UPDATE_AVAILABLE", () => {
-      setMessage("Update available");
+      setStatus("Update available");
+    });
+
+    window.background.on("UPDATE_NOT_AVAILABLE", () => {
+      setLoading(false);
+    });
+
+    window.background.on("DOWNLOAD-PROGRESS", (percent: number) => {
+      setStatus(`Downloading : ${percent}%`);
     });
 
     window.background.on("UPDATE_DOWNLOADED", () => {
-      setMessage("Update downloaded, restarting");
+      setStatus("Update downloaded, restarting");
     });
 
     window.background.send("GET_APP_VERSION");
   }, []);
 
-  return (
+  return loading ? (
     <>
-      <p>cc Louis</p>
-      <p>{version ? version : "no version"}</p>
-      {message && <p>{message}</p>}
+      <h3>Hueraki</h3>
+      {status && <p>{status}</p>}
     </>
+  ) : (
+    <p>{version ? version : "no version"}</p>
   );
 }
 
