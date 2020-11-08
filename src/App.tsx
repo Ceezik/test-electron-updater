@@ -9,7 +9,7 @@ declare var window: Window & {
 function App() {
   const [version, setVersion] = useState("");
   const [status, setStatus] = useState("Looking for updates");
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(process.env.NODE_ENV === "production");
 
   useEffect(() => {
     window.background.on("GET_APP_VERSION", (version: string) => {
