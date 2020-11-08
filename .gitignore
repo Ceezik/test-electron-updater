@@ -10,7 +10,6 @@
 *.log
 
 # production
-electron-builder.yml
 /build
 /dist
 

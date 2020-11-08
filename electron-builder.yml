@@ -1,0 +1,4 @@
+appId: hueraki.desktop.app
+publish:
+  provider: github
+  token: ${GH_TOKEN}
