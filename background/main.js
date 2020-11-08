@@ -23,7 +23,7 @@ async function createWindow() {
       : `file://${path.join(__dirname, "../build/index.html")}`
   );
 
-  autoUpdater.checkForUpdatesAndNotify();
+  autoUpdater.checkForUpdates();
   mainWindow.maximize();
   mainWindow.show();
   isDev && mainWindow.webContents.openDevTools();
@@ -48,6 +48,7 @@ app.on("activate", () => {
 });
 
 autoUpdater.on("update-available", () => {
+  console.log("update");
   mainWindow.webContents.send("UPDATE_AVAILABLE");
 });
 
@@ -56,6 +57,7 @@ autoUpdater.on("update-not-available", () => {
 });
 
 autoUpdater.on("download-progress", (progress) => {
+  console.log(progress);
   mainWindow.webContents.send(
     "DOWNLOAD_PROGRESS",
     Math.round(progress.percent)
