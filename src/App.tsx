@@ -24,7 +24,7 @@ function App() {
       setLoading(false);
     });
 
-    window.background.on("DOWNLOAD-PROGRESS", (percent: number) => {
+    window.background.on("DOWNLOAD_PROGRESS", (percent: number) => {
       setStatus(`Downloading : ${percent}%`);
     });
 
