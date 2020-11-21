@@ -1,0 +1,7 @@
+{
+  "update": {
+    "loading": "Looking for update",
+    "available": "Update available",
+    "downloaded": "Update downloaded, restarting"
+  }
+}

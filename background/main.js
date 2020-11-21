@@ -8,6 +8,9 @@ Menu.setApplicationMenu(false);
 
 async function createWindow() {
   mainWindow = new BrowserWindow({
+    title: "Hueraki",
+    minWidth: 600,
+    minHeight: 800,
     show: false,
     webPreferences: {
       nodeIntegration: false,
@@ -17,6 +20,7 @@ async function createWindow() {
     },
   });
 
+  mainWindow.maximize();
   await mainWindow.loadURL(
     isDev
       ? "http://localhost:3000"
@@ -24,7 +28,6 @@ async function createWindow() {
   );
 
   autoUpdater.checkForUpdates();
-  mainWindow.maximize();
   mainWindow.show();
   isDev && mainWindow.webContents.openDevTools();
 
@@ -53,13 +56,6 @@ autoUpdater.on("update-available", () => {
 
 autoUpdater.on("update-not-available", () => {
   mainWindow.webContents.send("UPDATE_NOT_AVAILABLE");
-});
-
-autoUpdater.on("download-progress", (progress) => {
-  mainWindow.webContents.send(
-    "DOWNLOAD_PROGRESS",
-    Math.round(progress.percent)
-  );
 });
 
 autoUpdater.on("update-downloaded", () => {

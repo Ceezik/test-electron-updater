@@ -1,0 +1,7 @@
+{
+  "update": {
+    "loading": "Recherche de mise à jour",
+    "available": "Mise à jour disponible",
+    "downloaded": "Mise à jour téléchargée, redémarrage"
+  }
+}
