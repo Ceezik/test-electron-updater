@@ -44,7 +44,6 @@ export default function Signin() {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <input type="password" placeholder="test" />
 
         <button type="submit" disabled={loading}>
           Connexion
