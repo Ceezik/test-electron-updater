@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { Router, Switch, Route } from "react-router-dom";
+import { Router, Switch, Route, Link } from "react-router-dom";
 import PrivateRoute from "./components/PrivateRoute";
 import Signin from "./containers/Signin";
 import SplashScreen from "./components/SplashScreen";
@@ -28,12 +28,19 @@ export default function App() {
       {checkingVersion || fetchingUser ? (
         <SplashScreen status={status} />
       ) : (
-        <Router history={history}>
-          <Switch>
-            <PrivateRoute exact path="/" component={Home} />
-            <Route exact path="/signin" component={Signin} />
-          </Switch>
-        </Router>
+        <>
+          <p>test</p>
+          <Router history={history}>
+            <>
+              <Link to="/">Home</Link>
+              <Link to="/signin">Signin</Link>
+              <Switch>
+                <PrivateRoute exact path="/" component={Home} />
+                <Route exact path="/signin" component={Signin} />
+              </Switch>
+            </>
+          </Router>
+        </>
       )}
     </>
   );
