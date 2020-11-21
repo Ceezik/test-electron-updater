@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { Router, Switch, Route, Link, useLocation } from "react-router-dom";
+import { Router, Switch, Route, Link } from "react-router-dom";
 import PrivateRoute from "./components/PrivateRoute";
 import Signin from "./containers/Signin";
 import SplashScreen from "./components/SplashScreen";
@@ -12,13 +12,6 @@ import history from "../utils/history";
 
 function Home() {
   return <p>home</p>;
-}
-
-function Test() {
-  const { pathname } = useLocation();
-  alert(pathname);
-
-  return <> </>;
 }
 
 export default function App() {
@@ -36,7 +29,6 @@ export default function App() {
         <SplashScreen status={status} />
       ) : (
         <Router history={history}>
-          <Test />
           <Link to="/">Home</Link>
           <Link to="/signin">Signin</Link>
           <Switch>
